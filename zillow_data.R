@@ -1,11 +1,27 @@
+# read packages
 library("tidyverse")
 library("vroom")
 library("ggplot2")
 library("lubridate")
 library("viridis")
 
-# home values -- zillow home value index
+# recessions
+recessions <- read_csv(
+    "peak, trough
+    1948-11-01, 1949-10-01
+    1953-07-01, 1954-05-01
+    1957-08-01, 1958-04-01
+    1960-04-01, 1961-02-01
+    1969-12-01, 1970-11-01
+    1973-11-01, 1975-03-01
+    1980-01-01, 1980-07-01
+    1981-07-01, 1982-11-01
+    1990-07-01, 1991-03-01
+    2001-03-01, 2001-11-01
+    2007-12-01, 2009-06-01
+    2020-02-01, 2020-04-01")
 
+# home values -- zillow home value index
 zhvi <- vroom("https://files.zillowstatic.com/research/public_csvs/zhvi/Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_month.csv?t=1667088753")
 
 zhvi %>% 
@@ -60,8 +76,17 @@ p  <- ggplot(zhvi_us, aes(date, color = RegionName)) +
     scale_y_continuous(labels=scales::percent) +
     theme(legend.title = element_blank(), plot.caption = element_text(hjust = 0)) +
     labs(x="", y="", title = "Zillow Home Value Index Y/Y Growth (Nominal = Dashed)"
-        , caption = "Source: Zillow, BEA\nNote: Nominal values deflated by Personal Consumption Expenditures Chain Type Price Index (PCEPI) \n@darrenwchang")
+        , caption = "Source: Zillow, BEA\nNote: Nominal values deflated by Personal Consumption Expenditures Chain Type Price Index (PCEPI) \n@darrenwchang") +
+    geom_rect(data = recessions %>%
+                        filter(peak >= '1996-01-01'), 
+                    inherit.aes = F, 
+                aes(xmin = peak, 
+                    xmax = trough, 
+                    ymin = -Inf, 
+                    ymax = +Inf), 
+                    fill='darkgray', 
+                    alpha=0.5)
 
-ggsave('real_zhvi.png', plot = p)
-# 1. QAR forecasting
+p
 
+ggsave('real_zhvi.png', plot = p, bg = 'white')
