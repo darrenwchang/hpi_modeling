@@ -12,8 +12,8 @@ To-do:
 * functional data analysis
 
 Sources:
-* [Zillow Research] (https://www.zillow.com/research/data/)
-* [Len Kiefer's Blog] (http://lenkiefer.com/2020/10/06/forecasting-house-prices-with-quantile-autoregression-qar/)
-* [Prof. Hooker] (http://gileshooker.com/) for FDA
+* [Zillow Research](https://www.zillow.com/research/data/)
+* [Len Kiefer's Blog](http://lenkiefer.com/2020/10/06/forecasting-house-prices-with-quantile-autoregression-qar/)
+* [Prof. Hooker](http://gileshooker.com/) for FDA
 
-!(real_zhvi.png)
+!(/real_zhvi.png)
