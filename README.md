@@ -16,7 +16,7 @@ Sources:
 * [Len Kiefer's Blog](http://lenkiefer.com/2020/10/06/forecasting-house-prices-with-quantile-autoregression-qar/)
 * [Prof. Hooker](http://gileshooker.com/) for FDA
 
-![Zillow Home Value Index vs PCE](https://https://github.com/darrenwchang/hpi_modeling/blob/main/figures/real_zhvi.png)
+![Zillow Home Value Index vs PCE](https://github.com/darrenwchang/hpi_modeling/blob/main/figures/real_zhvi.png)
 
 ![Quantile AutoRegression Model](https://github.com/darrenwchang/hpi_modeling/blob/main/figures/qar_zhvi.png)
 
